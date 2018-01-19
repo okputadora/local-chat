@@ -1,0 +1,12 @@
+Part 2: 17:30
+MONGO COMMANDS
+To access the database:
+  $ mongod
+  $ mongo <directory name>
+  $ show collections
+  --placeschemas
+  --profileschemas
+
+To erase contents
+  $ db.getCollection("profileschemas").drop()
+  --true
