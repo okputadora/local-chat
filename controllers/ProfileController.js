@@ -13,7 +13,15 @@ module.exports = {
           reject(err)
           return
         }
-        resolve(profiles)
+
+        // create a list to loop through so we can apply the summary method which
+        // we defined in the model
+        var list = [];
+        for (var i=0; i<profiles.length; i++){
+          var profile = profiles[i]
+          list.push(profile.summary())
+        }
+        resolve(list)
       })
     })
   },
@@ -24,7 +32,8 @@ module.exports = {
           reject(err)
           return
         }
-        resolve(profile)
+        // .summary method defined in the model
+        resolve(profile.summary())
       })
     })
   },
@@ -39,7 +48,7 @@ module.exports = {
           reject(err)
           return
         }
-        resolve(profile)
+        resolve(profile.summary)
         return
       })
     })
