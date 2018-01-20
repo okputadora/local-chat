@@ -3,6 +3,38 @@ var router = express.Router()
 var ProfileController = require('../controllers/ProfileController')
 var bcrypt = require('bcrypt')
 
+// router to see who is logged into a session
+router.get('/:action', function(req, res, next){
+  var action = req.params.action
+  console.log("Action: " + action)
+  if (action == 'currentuser'){ // check if user is logged in
+    console.log("Current user")
+    // if the user has never logged in
+    if (req.session == null){
+      res.json({
+        confirmation: 'fail',
+        message: 'user not logged in'
+      })
+      return
+    }
+    // if there is a session but no user key associated with the session
+    if (req.session.user == null){
+      res.json({
+        confirmation: 'fail',
+        message: 'user not logged in'
+      })
+      return
+    }
+    // if the user is logged in to a session
+    var userId = req.session.user
+    res.json({
+      confirmation: 'success',
+      user: userId
+    })
+  }
+})
+
+
 // logins are typically handled with post requests
 // parameter name is action rather than resource because this is not a rest api
 // actions will be stuff like login logout edit etc
