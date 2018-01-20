@@ -45,7 +45,6 @@ module.exports = {
   post: function(params){
     return new Promise(function(resolve, reject){
       //here params is the form input values--req.body from api.js
-      // encrypt password before create command
       var password = params.password
       // encrypt the password
       params['password'] = bcrypt.hashSync(password, 10)
@@ -54,7 +53,7 @@ module.exports = {
           reject(err)
           return
         }
-        resolve(profile.summary)
+        resolve(profile.summary())
         return
       })
     })
