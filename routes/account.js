@@ -27,12 +27,29 @@ router.post('/:action', function(req, res, next){
       var password = req.body.password
       //check password
       var passwordCorrect = bcrypt.compareSync(password, profile.password)
+      if (passwordCorrect == false){
+        res.json({
+          confirmation:'fail',
+          message:'Incorrect Password'
+        })
+        return;
+      }
+
+      // start a session if the user successfully logs in
+      req.session.user = profile._id
+
       res.json({
         confirmation: 'success',
-        profile: profile
+        profile: profile.summary()
       })
     })
-    .catch()
+    .catch(function(err){
+      res.json({
+        confirmation: 'fail',
+        message: err
+      })
+      return
+    })
   }
 })
 

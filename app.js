@@ -8,7 +8,7 @@ var mongoose = require('mongoose');
 var index = require('./routes/index');
 var api = require('./routes/api');
 var account = require('./routes/account')
-
+var sessions = require('client-sessions')
 
 var dbUrl = 'mongodb://localhost/local-chat'
 mongoose.connect(dbUrl, function(err, res){
@@ -33,6 +33,15 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// This needs to be after the cookie parser
+app.use(sessions({
+  cookieName: 'session',
+  secret: 'ajajfjwfajwef',
+  duration: 24*60*60*1000, // 1 day
+  activeDuration: 30*60*1000 // 30 minutes
+}))
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);

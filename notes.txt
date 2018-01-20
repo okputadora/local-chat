@@ -10,3 +10,9 @@ To access the database:
 To erase contents
   $ db.getCollection("profileschemas").drop()
   --true
+
+Part 2: 58:30
+Initiating a "session" -- after the user logs in we need to start a session to
+continue to give that user access to their account info
+  $ npm  i -S clinet-sessions
+add then require in the app.js file
