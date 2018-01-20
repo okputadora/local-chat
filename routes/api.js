@@ -15,7 +15,9 @@ router.get('/:resource', function(req, res, next){
 			message:'Invalid resource...check your spelling'
 		})
 	}
-	controller.get(null)
+	// the false parameter here indicated that we dont want the raw response
+	//  we want the password to be hidden
+	controller.get(null, false)
 	.then(function(results){
 		res.json({
 	    confirmation: 'success',

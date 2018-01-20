@@ -10,7 +10,7 @@
     <h2>Login</h2>
     <!-- login form should use different route than the API route. API route is for
     CRUD operations only -->
-    <form>
+    <form action='/account/login' method='post'>
       <input type='text' name='email' placeholder='Email'/><br />
       <input type='text' name='password' placeholder='Password'/><br />
       <input type='submit' value='Submit' /><br />

@@ -5,15 +5,20 @@ var Promise = require('bluebird')
 var bcrypt = require('bcrypt')
 
 module.exports = {
-
-  get: function(params){
+//CRUD FUNCTIONS
+  // isRaw parameter is true or false. We want the raw profile when we're comparing
+  // a password and we don't want it raw when we're using get from the api
+  get: function(params, isRaw){
     return new Promise(function(resolve, reject){
       Profile.find(params, function(err, profiles){
         if (err){
           reject(err)
           return
         }
-
+        if (isRaw == true){
+          resolve(profiles)
+          return
+        }
         // create a list to loop through so we can apply the summary method which
         // we defined in the model
         var list = [];
@@ -42,6 +47,7 @@ module.exports = {
       //here params is the form input values--req.body from api.js
       // encrypt password before create command
       var password = params.password
+      // encrypt the password
       params['password'] = bcrypt.hashSync(password, 10)
       Profile.create(params, function(err, profile){
         if (err){
