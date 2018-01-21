@@ -9,6 +9,7 @@ var index = require('./routes/index');
 var api = require('./routes/api');
 var account = require('./routes/account')
 var sessions = require('client-sessions')
+require('dotenv').config()
 
 var dbUrl = 'mongodb://localhost/local-chat'
 mongoose.connect(dbUrl, function(err, res){
