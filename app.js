@@ -11,13 +11,12 @@ var account = require('./routes/account')
 var sessions = require('client-sessions')
 require('dotenv').config()
 
-var dbUrl = 'mongodb://localhost/local-chat'
-mongoose.connect(dbUrl, function(err, res){
+mongoose.connect(process.env.MONGO_DB, function(err, res){
   if (err){
     console.log('DB CONNECTION FAILED: '+err)
   }
   else{
-    console.log('DB CONNECTION SUCCESS: '+dbUrl)
+    console.log('DB CONNECTION SUCCESS: '+process.env.MONGO_DB)
   }
 
 })

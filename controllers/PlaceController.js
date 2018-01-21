@@ -39,11 +39,9 @@ module.exports = {
       // superagent uses a promise structure. the promise chain looks like...
       var url = 'https://maps.googleapis.com/maps/api/geocode/json'
       var geoParams = {
-        key: 'AIzaSyChJw4DPIgdTEupvH25AIoUHn5dzMGwuoY',
+        key: process.env.GOOGLE_MAP_API,
         address: address
       }
-      console.log(url)
-      console.log(geoParams)
       superagent
       .get(url)
       .query(geoParams)
@@ -55,7 +53,6 @@ module.exports = {
         }
         // parse the json response
         var results = response.body.results
-        console.log(results);
         var locationInfo = results[0].geometry
         var latlng= locationInfo.location
 
