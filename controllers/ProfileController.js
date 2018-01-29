@@ -10,6 +10,7 @@ module.exports = {
   // a password and we don't want it raw when we're using get from the api
   get: function(params, isRaw){
     return new Promise(function(resolve, reject){
+      //.find method comes from mongoose
       Profile.find(params, function(err, profiles){
         if (err){
           reject(err)
@@ -20,7 +21,7 @@ module.exports = {
           return
         }
         // create a list to loop through so we can apply the summary method which
-        // we defined in the model
+        // we defined in the Profilw model
         var list = [];
         for (var i=0; i<profiles.length; i++){
           var profile = profiles[i]
@@ -37,7 +38,7 @@ module.exports = {
           reject(err)
           return
         }
-        // .summary method defined in the model
+        // .summary method defined in the Profile model
         resolve(profile.summary())
       })
     })
@@ -48,6 +49,8 @@ module.exports = {
       var password = params.password
       // encrypt the password
       params['password'] = bcrypt.hashSync(password, 10)
+      // .create method from mongoose
+      // these params need to match the keys in the profile model e.g. password, firstName etc.
       Profile.create(params, function(err, profile){
         if (err){
           reject(err)
@@ -65,7 +68,7 @@ module.exports = {
           reject(err)
           return
         }
-        resolve(profile)
+        resolve(profile.summary())
         return
       })
     })

@@ -12,7 +12,16 @@ module.exports = {
           reject(err)
           return
         }
-        resolve(places)
+        var list = [];
+        if (isRaw){
+          resolve(places)
+          return
+        }
+        for (var i=0; i< places.length; i++){
+          var place = places[i]
+          list.push(place.summary())
+        }
+        resolve(list)
       })
     })
   },
@@ -23,7 +32,7 @@ module.exports = {
           reject(err)
           return
         }
-        resolve(place)
+        resolve(place.summary)
       })
     })
   },
@@ -63,7 +72,8 @@ module.exports = {
             reject(err)
             return
           }
-          resolve(place)
+          console.log(place)
+          resolve(place.summary())
         })
       })
 
