@@ -4,7 +4,9 @@ var Promise = require('bluebird')
 module.exports = {
   get: function(params, isRaw){
     return new Promise(function(resolve, reject){
-      Place.find(params, function(err, comments){
+      var sortOrder = (params.sort == 'asc') ? 1 : -1
+      delete params.sort
+      Place.find(params, null, {sort:{timestamp: sortOrder}}, function(err, comments){
         if (err){
           reject(err)
           return

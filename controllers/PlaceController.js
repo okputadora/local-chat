@@ -6,7 +6,10 @@ module.exports = {
 
   get: function(params, isRaw){
     return new Promise(function(resolve, reject){
-      Place.find(params, function(err, places){
+      var sortOrder = (params.sort == 'asc') ? 1: -1
+      delete params['sort']
+      // filter the results by timestamp. these filters are native to mongoose
+      Place.find(params, null, {sort:{timestamp: sortOrder}}, function(err, places){
         if (err){
           reject(err)
           return

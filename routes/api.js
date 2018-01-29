@@ -16,8 +16,11 @@ router.get('/:resource', function(req, res, next){
 		})
 	}
 	// the false parameter here indicated that we dont want the raw response
-	//  we want the password to be hidden
-	controller.get(null, false)
+	//  we want the password to be hidden. req.query gets paramaters for a GET Request
+	// req.body is for POST request
+	console.log("looking for places");
+	console.log(req.query)
+	controller.get(req.query, false)
 	.then(function(results){
 		res.json({
 	    confirmation: 'success',

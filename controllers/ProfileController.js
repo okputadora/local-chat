@@ -11,7 +11,9 @@ module.exports = {
   get: function(params, isRaw){
     return new Promise(function(resolve, reject){
       //.find method comes from mongoose
-      Profile.find(params, function(err, profiles){
+      var sortOrder = (params.sort == 'asc') ? 1 : -1
+      delete params.sort
+      Profile.find(params, null,  {sort:{timestamp: sortVal}}, function(err, profiles){
         if (err){
           reject(err)
           return
