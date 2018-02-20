@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
+import styles from './styles'
 
+const style = styles.zone
 class Zone extends Component {
   render(){
     return (
-    <div>
-      <h2><a href="#">{this.props.zone.name}</a></h2>
+    <div style={style.container}>
+      <h2><a style={style.header} href="#">{this.props.zone.name}</a></h2>
       <span>{this.props.zone.zipCode}</span><br />
       <span>{this.props.zone.numComments}</span>
     </div>

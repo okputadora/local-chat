@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import reactDOM from 'react-dom'
-import Zones from './components/Zones'
+import Home from './components/Home'
+import Comments from './components/Comments'
 class App extends Component {
   render(){
     console.log("hello")
     return (
-      <div><Zones /></div>
+      <div><Home /></div>
     )
   }
 }
