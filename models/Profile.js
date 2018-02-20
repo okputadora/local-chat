@@ -17,7 +17,6 @@ ProfileSchema.methods.summary = function(){
 		firstName: this.firstName,
 		lastName: this.lastName,
 		email: this.email,
-    // id provided by mongoose
 		id: this._id
 	}
 	return summary;

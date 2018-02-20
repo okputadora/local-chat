@@ -26,7 +26,6 @@ module.exports = {
       })
     })
   },
-
   getById: function(id){
     return new Promise(function(resolve, reject){
       Place.findById(id, function(err, comment){
@@ -38,7 +37,6 @@ module.exports = {
       })
     })
   },
-
   post: function(params){
     return new Promise(function(resolve, reject){
       Comment.create(params, function(err, comment){
@@ -50,7 +48,6 @@ module.exports = {
       })
     })
   },
-
   put: function(id, params){
     return new Promise(function(resolve, reject){
       Comment.findByIdAndUpdate(id, params, function(err, comment){

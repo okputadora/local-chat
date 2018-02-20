@@ -12,7 +12,7 @@ var geo = require('./routes/geo')
 var sessions = require('client-sessions')
 require('dotenv').config()
 
-mongoose.connect(process.env.MONGO_DB, function(err, res){
+mongoose.connect(process.env.MONGO_DB,{useMongoClient: true}, function(err, res){
   if (err){
     console.log('DB CONNECTION FAILED: '+err)
   }
