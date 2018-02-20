@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import Zone from '../presentation/Zone'
 import { APIManager } from '../../utils/'
+import { connect } from 'react-redux'
+import  actions from '../../actions/actions'
+// we need the store because it dispatched the actions we've imported in the line above
+import store from '../../store/store'
 
 class Zones extends Component {
   constructor(){
@@ -9,21 +13,24 @@ class Zones extends Component {
       zone: {
         name: '',
         zip: '',
-      },
-      list: []
+      }
     }
   }
   // this is another built in function that we are overriding
   // looks like it means something similar to document.ready but for the component
   componentDidMount(){
-    APIManager.get('/api/place', null, (err, results) =>{
+    APIManager.get('/api/place', null, (err, response) =>{
       if (err){
         alert('error '+err)
         return
       }
-      this.setState({
-        list: results
-      })
+      // this now belongs in the store and instead we will "dispatch the action"
+      // this.setState({
+      //   list: results
+      // })
+      console.log('calling the acion from the zone container')
+      const zones = response
+      store.currentStore().dispatch(actions.zonesReceived(zones))
     })
   }
   // different way from doing the comments one - putting it all in one function
@@ -76,4 +83,11 @@ class Zones extends Component {
   }
 }
 
-export default Zones
+// connect to redux
+const stateToProps = (state) => {
+  return {
+    // state refers to the store, zone refers to the zoneReducer
+    list: state.zone.list
+  }
+}
+export default connect(stateToProps)(Zones)

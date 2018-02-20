@@ -1,0 +1,211 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'i',
+1 verbose cli   '-S',
+1 verbose cli   'redux',
+1 verbose cli   'react-redux',
+1 verbose cli   'redux-thunkcd',
+1 verbose cli   '..' ]
+2 info using npm@3.10.10
+3 info using node@v6.11.3
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData redux@^3.7.2
+8 silly fetchPackageMetaData react-redux@^5.0.7
+9 silly fetchPackageMetaData redux-thunkcd
+10 silly fetchPackageMetaData ..
+11 silly fetchNamedPackageData redux
+12 silly mapToRegistry name redux
+13 silly mapToRegistry using default registry
+14 silly mapToRegistry registry https://registry.npmjs.org/
+15 silly mapToRegistry data Result {
+15 silly mapToRegistry   raw: 'redux',
+15 silly mapToRegistry   scope: null,
+15 silly mapToRegistry   escapedName: 'redux',
+15 silly mapToRegistry   name: 'redux',
+15 silly mapToRegistry   rawSpec: '',
+15 silly mapToRegistry   spec: 'latest',
+15 silly mapToRegistry   type: 'tag' }
+16 silly mapToRegistry uri https://registry.npmjs.org/redux
+17 silly fetchNamedPackageData react-redux
+18 silly mapToRegistry name react-redux
+19 silly mapToRegistry using default registry
+20 silly mapToRegistry registry https://registry.npmjs.org/
+21 silly mapToRegistry data Result {
+21 silly mapToRegistry   raw: 'react-redux',
+21 silly mapToRegistry   scope: null,
+21 silly mapToRegistry   escapedName: 'react-redux',
+21 silly mapToRegistry   name: 'react-redux',
+21 silly mapToRegistry   rawSpec: '',
+21 silly mapToRegistry   spec: 'latest',
+21 silly mapToRegistry   type: 'tag' }
+22 silly mapToRegistry uri https://registry.npmjs.org/react-redux
+23 silly fetchNamedPackageData redux-thunkcd
+24 silly mapToRegistry name redux-thunkcd
+25 silly mapToRegistry using default registry
+26 silly mapToRegistry registry https://registry.npmjs.org/
+27 silly mapToRegistry data Result {
+27 silly mapToRegistry   raw: 'redux-thunkcd',
+27 silly mapToRegistry   scope: null,
+27 silly mapToRegistry   escapedName: 'redux-thunkcd',
+27 silly mapToRegistry   name: 'redux-thunkcd',
+27 silly mapToRegistry   rawSpec: '',
+27 silly mapToRegistry   spec: 'latest',
+27 silly mapToRegistry   type: 'tag' }
+28 silly mapToRegistry uri https://registry.npmjs.org/redux-thunkcd
+29 verbose request uri https://registry.npmjs.org/redux-thunkcd
+30 verbose request no auth needed
+31 info attempt registry request try #1 at 1:26:44 PM
+32 verbose request id fb5993d48dc6fd31
+33 http request GET https://registry.npmjs.org/redux-thunkcd
+34 silly fetchOtherPackageData ..
+35 silly cache add args [ '..', null ]
+36 verbose cache add spec ..
+37 silly cache add parsed spec Result {
+37 silly cache add   raw: '..',
+37 silly cache add   scope: null,
+37 silly cache add   escapedName: null,
+37 silly cache add   name: null,
+37 silly cache add   rawSpec: '..',
+37 silly cache add   spec: 'C:\\Users\\ok_computadora\\Documents\\Programming\\node\\local-chat\\src',
+37 silly cache add   type: 'local' }
+38 verbose request uri https://registry.npmjs.org/react-redux
+39 verbose request no auth needed
+40 info attempt registry request try #1 at 1:26:44 PM
+41 verbose etag "5a8b1921-30043"
+42 verbose lastModified Mon, 19 Feb 2018 18:36:17 GMT
+43 http request GET https://registry.npmjs.org/react-redux
+44 verbose request uri https://registry.npmjs.org/redux
+45 verbose request no auth needed
+46 info attempt registry request try #1 at 1:26:44 PM
+47 verbose etag "5a8b191d-2b1c2"
+48 verbose lastModified Mon, 19 Feb 2018 18:36:13 GMT
+49 http request GET https://registry.npmjs.org/redux
+50 error addLocal Could not install C:\Users\ok_computadora\Documents\Programming\node\local-chat\src
+51 silly fetchPackageMetaData Error: EISDIR: illegal operation on a directory, read
+51 silly fetchPackageMetaData     at Error (native)
+51 silly fetchPackageMetaData  error for .. { Error: EISDIR: illegal operation on a directory, read
+51 silly fetchPackageMetaData     at Error (native) errno: -4068, code: 'EISDIR', syscall: 'read' }
+52 http 304 https://registry.npmjs.org/react-redux
+53 verbose headers { date: 'Tue, 20 Feb 2018 18:26:43 GMT',
+53 verbose headers   via: '1.1 varnish',
+53 verbose headers   'cache-control': 'max-age=300',
+53 verbose headers   etag: '"5a8b1921-30043"',
+53 verbose headers   age: '10996',
+53 verbose headers   connection: 'keep-alive',
+53 verbose headers   'x-served-by': 'cache-ewr18134-EWR',
+53 verbose headers   'x-cache': 'HIT',
+53 verbose headers   'x-cache-hits': '2',
+53 verbose headers   'x-timer': 'S1519151203.484156,VS0,VE0',
+53 verbose headers   vary: 'Accept-Encoding, Accept' }
+54 silly get cb [ 304,
+54 silly get   { date: 'Tue, 20 Feb 2018 18:26:43 GMT',
+54 silly get     via: '1.1 varnish',
+54 silly get     'cache-control': 'max-age=300',
+54 silly get     etag: '"5a8b1921-30043"',
+54 silly get     age: '10996',
+54 silly get     connection: 'keep-alive',
+54 silly get     'x-served-by': 'cache-ewr18134-EWR',
+54 silly get     'x-cache': 'HIT',
+54 silly get     'x-cache-hits': '2',
+54 silly get     'x-timer': 'S1519151203.484156,VS0,VE0',
+54 silly get     vary: 'Accept-Encoding, Accept' } ]
+55 verbose etag https://registry.npmjs.org/react-redux from cache
+56 verbose get saving react-redux to C:\Users\ok_computadora\AppData\Roaming\npm-cache\registry.npmjs.org\react-redux\.cache.json
+57 verbose correctMkdir C:\Users\ok_computadora\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+58 http 304 https://registry.npmjs.org/redux
+59 verbose headers { date: 'Tue, 20 Feb 2018 18:26:43 GMT',
+59 verbose headers   via: '1.1 varnish',
+59 verbose headers   'cache-control': 'max-age=300',
+59 verbose headers   etag: '"5a8b191d-2b1c2"',
+59 verbose headers   age: '11952',
+59 verbose headers   connection: 'keep-alive',
+59 verbose headers   'x-served-by': 'cache-ewr18148-EWR',
+59 verbose headers   'x-cache': 'HIT',
+59 verbose headers   'x-cache-hits': '9',
+59 verbose headers   'x-timer': 'S1519151203.484037,VS0,VE0',
+59 verbose headers   vary: 'Accept-Encoding, Accept' }
+60 silly get cb [ 304,
+60 silly get   { date: 'Tue, 20 Feb 2018 18:26:43 GMT',
+60 silly get     via: '1.1 varnish',
+60 silly get     'cache-control': 'max-age=300',
+60 silly get     etag: '"5a8b191d-2b1c2"',
+60 silly get     age: '11952',
+60 silly get     connection: 'keep-alive',
+60 silly get     'x-served-by': 'cache-ewr18148-EWR',
+60 silly get     'x-cache': 'HIT',
+60 silly get     'x-cache-hits': '9',
+60 silly get     'x-timer': 'S1519151203.484037,VS0,VE0',
+60 silly get     vary: 'Accept-Encoding, Accept' } ]
+61 verbose etag https://registry.npmjs.org/redux from cache
+62 verbose get saving redux to C:\Users\ok_computadora\AppData\Roaming\npm-cache\registry.npmjs.org\redux\.cache.json
+63 verbose correctMkdir C:\Users\ok_computadora\AppData\Roaming\npm-cache correctMkdir already in flight; waiting
+64 http 404 https://registry.npmjs.org/redux-thunkcd
+65 verbose headers { 'content-type': 'application/json',
+65 verbose headers   'cache-control': 'max-age=0',
+65 verbose headers   'content-length': '2',
+65 verbose headers   'accept-ranges': 'bytes',
+65 verbose headers   date: 'Tue, 20 Feb 2018 18:26:43 GMT',
+65 verbose headers   via: '1.1 varnish',
+65 verbose headers   connection: 'keep-alive',
+65 verbose headers   'x-served-by': 'cache-ewr18127-EWR',
+65 verbose headers   'x-cache': 'MISS',
+65 verbose headers   'x-cache-hits': '0',
+65 verbose headers   'x-timer': 'S1519151203.480038,VS0,VE450',
+65 verbose headers   vary: 'Accept-Encoding' }
+66 silly get cb [ 404,
+66 silly get   { 'content-type': 'application/json',
+66 silly get     'cache-control': 'max-age=0',
+66 silly get     'content-length': '2',
+66 silly get     'accept-ranges': 'bytes',
+66 silly get     date: 'Tue, 20 Feb 2018 18:26:43 GMT',
+66 silly get     via: '1.1 varnish',
+66 silly get     connection: 'keep-alive',
+66 silly get     'x-served-by': 'cache-ewr18127-EWR',
+66 silly get     'x-cache': 'MISS',
+66 silly get     'x-cache-hits': '0',
+66 silly get     'x-timer': 'S1519151203.480038,VS0,VE450',
+66 silly get     vary: 'Accept-Encoding' } ]
+67 silly fetchPackageMetaData Error: Registry returned 404 for GET on https://registry.npmjs.org/redux-thunkcd
+67 silly fetchPackageMetaData     at makeError (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:302:12)
+67 silly fetchPackageMetaData     at CachingRegistryClient.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:280:14)
+67 silly fetchPackageMetaData     at Request._callback (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:210:14)
+67 silly fetchPackageMetaData     at Request.self.callback (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:187:22)
+67 silly fetchPackageMetaData     at emitTwo (events.js:106:13)
+67 silly fetchPackageMetaData     at Request.emit (events.js:191:7)
+67 silly fetchPackageMetaData     at Request.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:1048:10)
+67 silly fetchPackageMetaData     at emitOne (events.js:96:13)
+67 silly fetchPackageMetaData     at Request.emit (events.js:188:7)
+67 silly fetchPackageMetaData     at IncomingMessage.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:969:12)
+67 silly fetchPackageMetaData  error for redux-thunkcd { Error: Registry returned 404 for GET on https://registry.npmjs.org/redux-thunkcd
+67 silly fetchPackageMetaData     at makeError (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:302:12)
+67 silly fetchPackageMetaData     at CachingRegistryClient.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:280:14)
+67 silly fetchPackageMetaData     at Request._callback (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:210:14)
+67 silly fetchPackageMetaData     at Request.self.callback (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:187:22)
+67 silly fetchPackageMetaData     at emitTwo (events.js:106:13)
+67 silly fetchPackageMetaData     at Request.emit (events.js:191:7)
+67 silly fetchPackageMetaData     at Request.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:1048:10)
+67 silly fetchPackageMetaData     at emitOne (events.js:96:13)
+67 silly fetchPackageMetaData     at Request.emit (events.js:188:7)
+67 silly fetchPackageMetaData     at IncomingMessage.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:969:12) pkgid: 'redux-thunkcd', statusCode: 404, code: 'E404' }
+68 silly rollbackFailedOptional Starting
+69 silly rollbackFailedOptional Finishing
+70 silly runTopLevelLifecycles Finishing
+71 silly install printInstalled
+72 verbose stack Error: EISDIR: illegal operation on a directory, read
+72 verbose stack     at Error (native)
+73 verbose cwd C:\Users\ok_computadora\Documents\Programming\node\local-chat\src\store
+74 error Windows_NT 10.0.16299
+75 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "i" "-S" "redux" "react-redux" "redux-thunkcd" ".."
+76 error node v6.11.3
+77 error npm  v3.10.10
+78 error code EISDIR
+79 error errno -4068
+80 error syscall read
+81 error eisdir EISDIR: illegal operation on a directory, read
+82 error eisdir This is most likely not a problem with npm itself
+82 error eisdir and is related to npm not being able to find a package.json in
+82 error eisdir a package you are trying to install.
+83 verbose exit [ -4068, true ]
