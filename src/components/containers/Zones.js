@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Zone from '../presentation/Zone'
-import superagent from 'superagent'
+import { APIManager } from '../../utils/'
 
 class Zones extends Component {
   constructor(){
@@ -14,31 +14,22 @@ class Zones extends Component {
     }
   }
   // this is another built in function that we are overriding
+  // looks like it means something similar to document.ready but for the component
   componentDidMount(){
-    console.log('componentDidMount')
-
-    superagent
-    // give it a url
-    .get('/api/place')
-    // parameters if we had any
-    .query(null)
-    .set('Accept', 'application/json')
-    .end((err, response) => {
+    APIManager.get('/api/place', null, (err, results) =>{
       if (err){
         alert('error '+err)
         return
       }
-      console.log(JSON.stringify(response.body.results))
-      let results = response.body.results
       this.setState({
         list: results
       })
-
     })
   }
   // different way from doing the comments one - putting it all in one function
   updateZone(event){
-    console.log('updateZOneL ' + event.target.id + "-" + event.target.value)
+    console.log("CHANGE")
+    console.log(event.target.value)
     let updatedZone = Object.assign({}, this.state.zone)
     updatedZone[event.target.id] = event.target.value
     this.setState({
@@ -46,11 +37,21 @@ class Zones extends Component {
     })
   }
   submitZone(){
+    console.log("clicked")
     let updatedList = Object.assign([], this.state.list)
     updatedList.push(this.state.zone)
-    this.setState({
-      list: updatedList
+    console.log(this.state.zone)
+    APIManager.post('/api/place', this.state.zone, (err, results) =>{
+      if (err){
+        alert('error '+err)
+        return
+      }
+      console.log("post request made " + err)
+      this.setState({
+        list: updatedList
+      })
     })
+
   }
   render(){
     const listItems = this.state.list.map((element, i) => {
@@ -66,8 +67,8 @@ class Zones extends Component {
         </ol>
 
         <div>
-          <input id="name"type="text" onChange={this.updateZone.bind(this)} className="form-control" placeholder="name" />
-          <input id="zipCode"type="text" onChange={this.updateZone.bind(this)} className="form-control" placeholder="zipCode" />
+          <input id="name" type="text" onChange={this.updateZone.bind(this)} className="form-control" placeholder="name" />
+          <input id="zip" type="text" onChange={this.updateZone.bind(this)} className="form-control" placeholder="zipCode" />
           <button onClick={this.submitZone.bind(this)}>Submit Place</button>
         </div>
       </div>

@@ -1,7 +1,6 @@
 var Place = require('../models/Place')
 // npm i -S bluebird for ----- for handling promises
 var Promise = require('bluebird')
-var Request = require('../utils/Request')
 module.exports = {
 
   get: function(params, isRaw){
@@ -39,7 +38,7 @@ module.exports = {
     })
   },
   post: function(params){
-
+    // PROBLEMS IN HERE
     return new Promise(function(resolve, reject){
       // parse address from user input
       var address = params.address+','+params.city+','+params.state
@@ -53,33 +52,8 @@ module.exports = {
         key: process.env.GOOGLE_MAP_API,
         address: address
       }
-
-      Request.get(url, geoParams, function(err, response){
-        if (err){
-          reject(err)
-          return
-        }
-        // response parameter is response.body from utils/Request.js
-        var results = response.results
-        var locationInfo = results[0].geometry
-        var latlng= locationInfo.location
-
-        //prepare it for entry into the place model
-        params['geo'] = [latlng.lat, latlng.lng]
-        Place.create(params, function(err, place){
-         if (err){
-           // not sure where this reject comes from...where is the promise?
-           // is super agent a promise?
-           reject(err)
-           return
-         }
-         console.log(place)
-         resolve(place.summary())
-        })
-      })
     })
   },
-
   put: function(id, params){
     return new Promise(function(resolve, reject){
       Place.findByIdAndUpdate(id, function(err, profile){
