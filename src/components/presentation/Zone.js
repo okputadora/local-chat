@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import styles from './styles'
+import styles from '../containers/styles'
 
 const style = styles.zone
 class Zone extends Component {

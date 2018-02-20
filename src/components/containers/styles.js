@@ -15,9 +15,21 @@ export default {
       marginTop: 0,
       padding: 1
     }
-  }
+  },
   comment: {
-    
+    commentBox: {
+      padding: 15,
+      margin: 15,
+      background: '#f9f9f9'
+    },
+    body: {
+      background: '#f9f9f9',
+      color: ''
+    },
+
+    user: {
+      color: 'blue'
+    }
   }
 
 }

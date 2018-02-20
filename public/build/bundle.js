@@ -950,13 +950,9 @@ var _reactDom = __webpack_require__(18);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _Home = __webpack_require__(27);
+var _Home = __webpack_require__(33);
 
 var _Home2 = _interopRequireDefault(_Home);
-
-var _Comments = __webpack_require__(31);
-
-var _Comments2 = _interopRequireDefault(_Comments);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -18301,7 +18297,13 @@ function camelize(string) {
 module.exports = camelize;
 
 /***/ }),
-/* 27 */
+/* 27 */,
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */,
+/* 32 */,
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18317,11 +18319,11 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Zones = __webpack_require__(28);
+var _Zones = __webpack_require__(34);
 
 var _Zones2 = _interopRequireDefault(_Zones);
 
-var _Comments = __webpack_require__(31);
+var _Comments = __webpack_require__(36);
 
 var _Comments2 = _interopRequireDefault(_Comments);
 
@@ -18368,7 +18370,7 @@ var Home = function (_Component) {
 exports.default = Home;
 
 /***/ }),
-/* 28 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18384,7 +18386,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Zone = __webpack_require__(29);
+var _Zone = __webpack_require__(35);
 
 var _Zone2 = _interopRequireDefault(_Zone);
 
@@ -18405,18 +18407,43 @@ var Zones = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Zones.__proto__ || Object.getPrototypeOf(Zones)).call(this));
 
     _this.state = {
-      list: [{ name: 'Zone1', zipCode: '10011', numComments: 10 }, { name: 'Zone2', zipCode: '10012', numComments: 10 }, { name: 'Zone3', zipCode: '10013', numComments: 10 }]
+      zone: {
+        name: '',
+        zip: ''
+      },
+      list: []
     };
     return _this;
   }
+  // different way from doing the comments one - putting it all in one function
+
 
   _createClass(Zones, [{
+    key: 'updateZone',
+    value: function updateZone(event) {
+      console.log('updateZOneL ' + event.target.id + "-" + event.target.value);
+      var updatedZone = Object.assign({}, this.state.zone);
+      updatedZone[event.target.id] = event.target.value;
+      this.setState({
+        zone: updatedZone
+      });
+    }
+  }, {
+    key: 'submitZone',
+    value: function submitZone() {
+      var updatedList = Object.assign([], this.state.list);
+      updatedList.push(this.state.zone);
+      this.setState({
+        list: updatedList
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       var listItems = this.state.list.map(function (element, i) {
         return _react2.default.createElement(
           'li',
-          { style: { listStyleType: "none" } },
+          { key: i, style: { listStyleType: "none" } },
           _react2.default.createElement(_Zone2.default, { zone: element })
         );
       });
@@ -18428,6 +18455,17 @@ var Zones = function (_Component) {
           'ol',
           null,
           listItems
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement('input', { id: 'name', type: 'text', onChange: this.updateZone.bind(this), className: 'form-control', placeholder: 'name' }),
+          _react2.default.createElement('input', { id: 'zipCode', type: 'text', onChange: this.updateZone.bind(this), className: 'form-control', placeholder: 'zipCode' }),
+          _react2.default.createElement(
+            'button',
+            { onClick: this.submitZone.bind(this) },
+            'Submit Place'
+          )
         )
       );
     }
@@ -18439,7 +18477,7 @@ var Zones = function (_Component) {
 exports.default = Zones;
 
 /***/ }),
-/* 29 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18455,7 +18493,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _styles = __webpack_require__(30);
+var _styles = __webpack_require__(38);
 
 var _styles2 = _interopRequireDefault(_styles);
 
@@ -18514,14 +18552,7 @@ var Zone = function (_Component) {
 exports.default = Zone;
 
 /***/ }),
-/* 30 */
-/***/ (function(module, exports) {
-
-"use strict";
-throw new Error("Module build failed: SyntaxError: C:/Users/ok_computadora/Documents/Programming/node/local-chat/src/components/styles.js: Unexpected token, expected , (19:2)\n\n  17 |     }\n  18 |   }\n> 19 |   comment: {\n     |   ^\n  20 |     \n  21 |   }\n  22 | \n");
-
-/***/ }),
-/* 31 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18537,9 +18568,13 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Comment = __webpack_require__(32);
+var _Comment = __webpack_require__(37);
 
 var _Comment2 = _interopRequireDefault(_Comment);
+
+var _styles = __webpack_require__(38);
+
+var _styles2 = _interopRequireDefault(_styles);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -18548,6 +18583,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var style = _styles2.default.comment;
 
 var Comments = function (_Component) {
   _inherits(Comments, _Component);
@@ -18558,25 +18595,90 @@ var Comments = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Comments.__proto__ || Object.getPrototypeOf(Comments)).call(this));
 
     _this.state = {
-      list: [{ body: 'a sample Comment', user: 'fromme' }, { body: 'another comment', user: 'another user' }, { body: 'third time comment', user: 'thirdUser' }]
+      comment: {
+        username: '',
+        body: '',
+        timestamp: ''
+      },
+      list: []
     };
     return _this;
   }
 
   _createClass(Comments, [{
+    key: 'updateUsername',
+    value: function updateUsername(event) {
+      console.log('update ' + event.target.value);
+      // this.state.comment['username'] = event.target.value !!!NOOO never mutate the state
+      // copy it and then update the state
+      var updatedComment = Object.assign({}, this.state.comment);
+      updatedComment['username'] = event.target.value;
+      // think of this like Saving
+      this.setState({
+        comment: updatedComment
+      });
+    }
+  }, {
+    key: 'updateBody',
+    value: function updateBody(event) {
+      console.log('comment ' + event.target.value);
+      var updatedComment = Object.assign({}, this.state.comment);
+      updatedComment['body'] = event.target.value;
+      this.setState({
+        comment: updatedComment
+      });
+    }
+  }, {
+    key: 'updateTimestamp',
+    value: function updateTimestamp(event) {
+      console.log(event.target.value);
+      var updatedComment = Object.assign({}, this.state.comment);
+      updatedComment['timestamp'] = event.target.value;
+      this.setState({
+        comment: updatedComment
+      });
+    }
+  }, {
+    key: 'submitComment',
+    value: function submitComment() {
+      console.log("submitCOmment " + JSON.stringify(this.state.comment));
+      var updatedList = Object.assign([], this.state.list);
+      updatedList.push(this.state.comment);
+      this.setState({
+        list: updatedList
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       var listItems = this.state.list.map(function (currentComment, i) {
         return _react2.default.createElement(
           'div',
-          null,
+          { key: i },
           _react2.default.createElement(_Comment2.default, { comment: currentComment })
         );
       });
       return _react2.default.createElement(
         'div',
-        null,
-        listItems
+        { style: style.commentBox },
+        _react2.default.createElement(
+          'h2',
+          null,
+          'Comments for Zone 1'
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          listItems
+        ),
+        _react2.default.createElement('input', { onChange: this.updateUsername.bind(this), className: 'form-control', type: 'text', placeholder: 'username' }),
+        _react2.default.createElement('input', { onChange: this.updateBody.bind(this), className: 'form-control', type: 'text', placeholder: 'comment' }),
+        _react2.default.createElement('input', { onChange: this.updateTimestamp.bind(this), className: 'form-control', type: 'text', placeholder: 'timestamp' }),
+        _react2.default.createElement(
+          'button',
+          { onClick: this.submitComment.bind(this), className: 'btn' },
+          'Submit Comment'
+        )
       );
     }
   }]);
@@ -18587,7 +18689,7 @@ var Comments = function (_Component) {
 exports.default = Comments;
 
 /***/ }),
-/* 32 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18603,9 +18705,9 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _style = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./style\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+var _styles = __webpack_require__(38);
 
-var _style2 = _interopRequireDefault(_style);
+var _styles2 = _interopRequireDefault(_styles);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -18615,7 +18717,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var style = _style2.default.comment;
+var style = _styles2.default.comment;
 
 var Comment = function (_Component) {
   _inherits(Comment, _Component);
@@ -18631,16 +18733,22 @@ var Comment = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
+        { style: style.commentBox },
         _react2.default.createElement(
           'div',
-          null,
+          { style: style.body },
           this.props.comment.body
         ),
         _react2.default.createElement(
           'div',
-          null,
-          this.props.comment.user
+          { style: style.body },
+          this.props.comment.username,
+          ' | ',
+          _react2.default.createElement(
+            'span',
+            null,
+            this.props.comment.timestamp
+          )
         )
       );
     }
@@ -18650,6 +18758,50 @@ var Comment = function (_Component) {
 }(_react.Component);
 
 exports.default = Comment;
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
+  universal: {},
+  zone: {
+    container: {
+      padding: 16,
+      background: '#f9f9f9',
+      marginTop: 12,
+      border: '1px solid #ddd'
+    },
+    header: {
+      textDecoration: 'none',
+      color: '#3a9d11',
+      marginTop: 0,
+      padding: 1
+    }
+  },
+  comment: {
+    commentBox: {
+      padding: 15,
+      margin: 15,
+      background: '#f9f9f9'
+    },
+    body: {
+      background: '#f9f9f9',
+      color: ''
+    },
+
+    user: {
+      color: 'blue'
+    }
+  }
+
+};
 
 /***/ })
 /******/ ]);

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import reactDOM from 'react-dom'
-import Home from './components/Home'
-import Comments from './components/Comments'
+import Home from './components/layout/Home'
+
 class App extends Component {
   render(){
     console.log("hello")
